@@ -4,7 +4,7 @@ info:
   description: HR Tool
   version: 1.0.0
 servers:
-  - url: 'http://localhost:8080'
+  - url: 'http://localhost:8085'
 paths:
   /vacation:
     get:
@@ -17,6 +17,24 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Vacation"
+  /employee/{id}/vacations/balance:
+    get:
+      description: Get employee vacations balance
+      operationId: getEmployeeVacationsBalance
+      parameters:
+        - in: path
+          required: true
+          name: id
+          description: Employee identifier
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Balance"
 
   
 components:
@@ -35,3 +53,13 @@ components:
           - casual
           - sickness
           - annual
+
+    Balance:
+      type: object
+      properties:
+        annual:
+          type: integer
+          example: 15
+        sickness:
+          type: integer
+          example: 2
