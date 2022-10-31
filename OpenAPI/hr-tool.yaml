@@ -1,0 +1,37 @@
+openapi: 3.0.3
+info:
+  title: HR Tool
+  description: HR Tool
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:8080'
+paths:
+  /vacation:
+    get:
+      description: Get vacation types
+      operationId: getVacationTypes
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Vacation"
+
+  
+components:
+  schemas:
+    Vacation:
+      type: object
+      properties:
+        types:
+          $ref: "#/components/schemas/VacationTypes"
+
+    VacationTypes:
+      type: array
+      items:
+        type: string
+        enum:
+          - casual
+          - sickness
+          - annual
