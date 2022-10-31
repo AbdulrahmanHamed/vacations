@@ -17,6 +17,41 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Vacation"
+  /employee/{id}/vacations:
+    post:
+      description: Create employee vacation
+      operationId: createEmployeeVacation
+      parameters:
+        - in: path
+          required: true
+          name: id
+          description: Employee identifier
+          schema:
+            type: integer
+        - in: query
+          name: vacationType
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: start
+          schema:
+            type: string
+            format: date
+          required: true
+        - in: query
+          name: end
+          schema:
+            type: string
+            format: date
+          required: true
+      responses:
+        201:
+          description: Created!
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Balance"
   /employee/{id}/vacations/balance:
     get:
       description: Get employee vacations balance

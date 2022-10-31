@@ -16,6 +16,6 @@ public class Employee {
     private String firstName;
     private String lastName;
     private int remainingAnnual;
-    private int getRemainingSickness;
+    private int remainingSickness;
 
 }
